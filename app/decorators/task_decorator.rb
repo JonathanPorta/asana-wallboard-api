@@ -30,6 +30,19 @@ class TaskDecorator < Draper::Decorator
     end
   end
 
+  def is_due_soon
+    if has_due_date && !is_past_due
+      hours_until = (due_date - DateTime.now).to_i/3600
+      if hours_until <= 36
+        true
+      else
+        false
+      end
+    else
+      false
+    end
+  end
+
   def due_date
     if object.due_at
       object.due_at
@@ -44,20 +57,48 @@ class TaskDecorator < Draper::Decorator
     if has_due_date
       taiw = helpers.time_ago_in_words(due_date)
       if is_past_due
-        "#{ taiw } ago"
+        "Due #{ taiw } ago"
       else
-        "in #{ taiw }"
+        "Due in #{ taiw }"
       end
     else
       'No Due Date'
     end
   end
 
+  def status
+    if !has_due_date || !is_assigned
+      'not-actionable'
+    elsif is_past_due
+      'past-due'
+    elsif is_due_soon
+      'due-soon'
+    else
+      'normal'
+    end
+  end
+
   def image
     if is_assigned
-      object.assignee.photo
+      if object.assignee.photo
+        object.assignee.photo
+      else
+        # For users without an avatar
+        'https://s3.amazonaws.com/general-web-assets/question-mark-mario-style-128x128.png'
+      end
     else
+      # For tasks without an assignee
       'https://s3.amazonaws.com/general-web-assets/exclamation-point-triangle-128x128.png'
     end
+  end
+
+  def tags
+    tags = []
+    if object.projects.length > 0
+      object.projects.each do |p|
+        tags.push p.name
+      end
+    end
+    tags
   end
 end

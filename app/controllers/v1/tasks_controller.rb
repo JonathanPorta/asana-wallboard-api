@@ -3,18 +3,21 @@ class V1::TasksController < ApplicationController
     @tasks = Task.all.decorate
   end
 
+  # Tasks that have a deadline and are assigned to a user are assumed to be 'doable'.
   def todo
-    @tasks = Task.where(completed: false).where.not(due_on: nil).order(due_on: :asc).decorate
+    @tasks = Task.getReadyToDoTasks.decorate
     render "v1/tasks/index"
   end
 
+  # Tasks that are not assigned to anyone. Who will do them? No one knows!
   def unassigned
-    @tasks = Task.where(completed: false).where.not(due_on: nil).where(assignee: nil).order(due_on: :asc).decorate
+    @tasks = Task.getUnassignedTasks.decorate
     render "v1/tasks/index"
   end
 
+  # Tasks without a due date set.
   def unplanned
-    @tasks = Task.where(completed: false).where(due_on: nil).order(created_at: :desc).decorate
+    @tasks = Task.getUnplannedTasks.decorate
     render "v1/tasks/index"
   end
 end

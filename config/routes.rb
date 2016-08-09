@@ -8,4 +8,6 @@ Rails.application.routes.draw do
     get 'tasks/unassigned', to: 'tasks#unassigned'
     get 'tasks/unplanned', to: 'tasks#unplanned'
   end
+
+  root to: redirect('/app')
 end
