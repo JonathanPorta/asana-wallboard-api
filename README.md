@@ -22,3 +22,7 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+### Data
+
+plz rails generate model user id:string:uniq name:string email:string photo:string

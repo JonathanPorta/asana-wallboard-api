@@ -4,3 +4,5 @@
 #   http_host: 'example.org',
 #   https: false
 # )
+
+Rails.logger = Logger.new(STDOUT)
