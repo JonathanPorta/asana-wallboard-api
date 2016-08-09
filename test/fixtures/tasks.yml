@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: MyString
+  created_at: 2016-08-09 02:12:02
+  modified_at: 2016-08-09 02:12:02
+  name: MyString
+  notes: MyText
+  completed: false
+  assignee_status: MyString
+  completed_at: 2016-08-09 02:12:02
+  due_on: 2016-08-09 02:12:02
+  due_at: 2016-08-09 02:12:02
+  workspace: MyString
+  num_hearts: 1
+  assignee: MyString
+  parent: MyString
+  hearted: false
+
+two:
+  id: MyString
+  created_at: 2016-08-09 02:12:02
+  modified_at: 2016-08-09 02:12:02
+  name: MyString
+  notes: MyText
+  completed: false
+  assignee_status: MyString
+  completed_at: 2016-08-09 02:12:02
+  due_on: 2016-08-09 02:12:02
+  due_at: 2016-08-09 02:12:02
+  workspace: MyString
+  num_hearts: 1
+  assignee: MyString
+  parent: MyString
+  hearted: false

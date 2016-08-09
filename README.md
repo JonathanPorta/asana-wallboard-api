@@ -26,3 +26,5 @@ Things you may want to cover:
 ### Data
 
 plz rails generate model user id:string:uniq name:string email:string photo:string
+
+plz rails generate model task id:string:primary_key created_at:datetime modified_at:datetime name:string notes:text completed:boolean assignee_status:string completed_at:datetime due_on:datetime due_at:datetime workspace:string:index num_hearts:integer assignee_id:string:index parent_id:string:index hearted:boolean

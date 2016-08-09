@@ -2,11 +2,17 @@ desc "Syncronize state with Asana"
 namespace :sync do
   task :all do
     Rake::Task['sync:users'].invoke
+    Rake::Task['sync:tasks'].invoke
   end
 
   task users: :environment do
     puts "syncing users"
     SyncUsers.new.call()
+  end
+
+  task tasks: :environment do
+    puts "syncing tasks"
+    SyncTasks.new.call()
   end
 
   desc 'Syncronize Asana every 5 minutes'

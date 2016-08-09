@@ -2,7 +2,7 @@ require 'asana'
 
 class AsanaApi
   def taskFields
-    ['id','assignee','assignee_status','created_at','completed','completed_at','due_on','due_at','external','hearted','followers','hearts','modified_at','name','notes','num_hearts','projects','parent','workspace','memberships']
+    ['id','assignee','assignee_status','created_at','completed','completed_at','due_on','due_at','external','hearted','modified_at','name','notes','num_hearts','projects','parent','workspace']
   end
 
   def projectFields
