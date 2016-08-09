@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160809081202) do
+ActiveRecord::Schema.define(version: 20160809102853) do
+
+  create_table "projects", id: false, force: :cascade do |t|
+    t.string   "id",           null: false
+    t.string   "workspace_id"
+    t.text     "notes"
+    t.string   "name"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["id"], name: "index_projects_on_id", unique: true
+    t.index ["workspace_id"], name: "index_projects_on_workspace_id"
+  end
+
+  create_table "projects_tasks", id: false, force: :cascade do |t|
+    t.string "project_id"
+    t.string "task_id"
+    t.index ["project_id"], name: "index_projects_tasks_on_project_id"
+    t.index ["task_id"], name: "index_projects_tasks_on_task_id"
+  end
 
   create_table "tasks", id: false, force: :cascade do |t|
     t.string   "id",              null: false

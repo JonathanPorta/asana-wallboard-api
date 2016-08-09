@@ -6,7 +6,7 @@ class AsanaApi
   end
 
   def projectFields
-    ['team','workspace','notes','color','followers','members','public','archived','modified_at','created_at','due_date','current_status','owner','id','name']
+    ['workspace','notes','id','name']
   end
 
   def userFields
