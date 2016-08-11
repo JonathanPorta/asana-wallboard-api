@@ -1,0 +1,44 @@
+
+.task-list md-list {
+  padding-top: 0;
+}
+.task-list md-chip {
+  height: 18px;
+  line-height: 18px;
+  font-size: 12px;
+  font-weight: bold;
+}
+.task-list h3.right {
+  text-align: right;
+  font-size: 28px !important;
+}
+.task-list .md-list-item-text.tags {
+  margin-left: 1em;
+}
+.task-list md-list-item .md-list-item-text > h3 {
+  font-size: 18px;
+  font-weight: bold;
+}
+.task-list .past-due {
+  background-color: #FF4338;
+}
+.task-list .past-due .md-list-item-text > h3 {
+  color: white !important;
+}
+.task-list .past-due md-chip {
+  background-color: white;
+  color: #FF4338;
+}
+.task-list .due-soon {
+  background-color: #F57C00;
+}
+.task-list .due-soon .md-list-item-text > h3 {
+  color: white !important;
+}
+.task-list .due-soon md-chip {
+  background-color: white;
+  color: #F57C00;
+}
+.task-list md-list-item.not-actionable {
+  opacity: 0.4;
+}

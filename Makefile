@@ -12,9 +12,6 @@ setup_heroku_env:
 	heroku config:set APP_SETTINGS=ProductionConfig --remote heroku-production
 
 setup_heroku_secrets:
-	source ./.env
-
-	# asana credentials
 	heroku config:set ASANA_API_KEY=${ASANA_API_KEY} --remote heroku-staging
 	heroku config:set ASANA_WORKSPACE_ID=${ASANA_WORKSPACE_ID} --remote heroku-staging
 	heroku config:set ASANA_API_KEY=${ASANA_API_KEY} --remote heroku-production
