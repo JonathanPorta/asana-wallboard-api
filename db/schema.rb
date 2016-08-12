@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20160809102853) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "projects", id: false, force: :cascade do |t|
     t.string   "id",           null: false
     t.string   "workspace_id"
@@ -19,15 +22,15 @@ ActiveRecord::Schema.define(version: 20160809102853) do
     t.string   "name"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.index ["id"], name: "index_projects_on_id", unique: true
-    t.index ["workspace_id"], name: "index_projects_on_workspace_id"
+    t.index ["id"], name: "index_projects_on_id", unique: true, using: :btree
+    t.index ["workspace_id"], name: "index_projects_on_workspace_id", using: :btree
   end
 
   create_table "projects_tasks", id: false, force: :cascade do |t|
     t.string "project_id"
     t.string "task_id"
-    t.index ["project_id"], name: "index_projects_tasks_on_project_id"
-    t.index ["task_id"], name: "index_projects_tasks_on_task_id"
+    t.index ["project_id"], name: "index_projects_tasks_on_project_id", using: :btree
+    t.index ["task_id"], name: "index_projects_tasks_on_task_id", using: :btree
   end
 
   create_table "tasks", id: false, force: :cascade do |t|
@@ -47,10 +50,10 @@ ActiveRecord::Schema.define(version: 20160809102853) do
     t.string   "parent_id"
     t.boolean  "hearted"
     t.datetime "updated_at",      null: false
-    t.index ["assignee_id"], name: "index_tasks_on_assignee_id"
-    t.index ["id"], name: "index_tasks_on_id", unique: true
-    t.index ["parent_id"], name: "index_tasks_on_parent_id"
-    t.index ["workspace_id"], name: "index_tasks_on_workspace_id"
+    t.index ["assignee_id"], name: "index_tasks_on_assignee_id", using: :btree
+    t.index ["id"], name: "index_tasks_on_id", unique: true, using: :btree
+    t.index ["parent_id"], name: "index_tasks_on_parent_id", using: :btree
+    t.index ["workspace_id"], name: "index_tasks_on_workspace_id", using: :btree
   end
 
   create_table "users", id: false, force: :cascade do |t|
@@ -60,7 +63,7 @@ ActiveRecord::Schema.define(version: 20160809102853) do
     t.string   "photo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["id"], name: "index_users_on_id", unique: true
+    t.index ["id"], name: "index_users_on_id", unique: true, using: :btree
   end
 
 end

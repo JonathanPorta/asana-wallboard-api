@@ -5,7 +5,10 @@ var app;
 
 app = angular.module('asana-wallboard', ['ngMaterial', 'ui.router']);
 
-app.run(function($rootScope, $state, $stateParams) {
+app.run(function($rootScope, $state, $stateParams, $interval) {
+  $interval(function() {
+    return window.location.reload();
+  }, 600000);
   $rootScope.$on("$stateChangeError", function() {
     return console.error('Error Changing state', arguments);
   });

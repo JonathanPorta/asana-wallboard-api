@@ -22,3 +22,13 @@ deploy_staging:
 
 deploy_production:
 	git push heroku-production master
+
+sync: sync_staging sync_production
+
+sync_staging:
+	heroku run rake db:migrate
+	heroku run rake sync:all --remote heroku-staging
+
+sync_production:
+	heroku run rake db:migrate
+	heroku run rake sync:all --remote heroku-production
