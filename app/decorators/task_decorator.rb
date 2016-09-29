@@ -93,12 +93,21 @@ class TaskDecorator < Draper::Decorator
   end
 
   def tags
+    ignore = ['Jessica’s Tasks in jonathanporta.com', 'My Tasks in jonathanporta.com']
     tags = []
     if object.projects.length > 0
       object.projects.each do |p|
         tags.push p.name
       end
     end
-    tags
+
+    # remove the worthless project names from the tag list.
+    tags.select do |t|
+      if !ignore.include? t
+        true
+      else
+        false
+      end
+    end
   end
 end
